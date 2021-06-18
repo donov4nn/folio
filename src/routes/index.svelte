@@ -2,17 +2,15 @@
 </script>
 
 <script>
+	import PageTitle from '$lib/PageTitle.svelte'
 	import TypeWriter from '$lib/TypeWriter.svelte'
 </script>
 
-<svelte:head>
-	<title>Donovan - Portfolio</title>
-</svelte:head>
+<PageTitle  title="Accueil"
+			text="Bienvenue sur mon site."
+			speed={1} />
 
-<h1><TypeWriter text="Donovan Michel" /></h1>
 
 <style>
-	h1 {
-		display : flex;
-	}
+
 </style>

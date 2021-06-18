@@ -1,39 +1,94 @@
 <script>
     import Fa from '$lib/FaWrapper.svelte'
+    import {clickOutside} from '$lib/clickOutside.js'
+
+    let flexA = false
+
+    function handleClickBurger() {
+        flexA = !flexA
+    }
+
+    function handleClickNavBar(e) {
+        if (e.toElement.matches('a')) {
+            flexA = false
+        }
+    }
 </script>
 
-<navbar>
+<navbar class:flexA use:clickOutside={() => flexA = false} on:click={handleClickNavBar}>
+    <span on:click={handleClickBurger} class="popOutIcon"><Fa faIcon="faBars" /></span>
     <a href="/" ><Fa faIcon={"faHome"} /></a>
-    <a href="/projects">Réalisations</a>
+    <a href="/projects">Projets</a>
     <a href="/articles">Articles</a>
     <a href="/cv">CV</a>
     <a href="/contact">Contact</a>
 </navbar>
 
 <style>
+    .flexA > a {
+        display : flex;
+    }
+    .popOutIcon {
+        display : none;
+    }
     navbar {
         width : 100%;
         height : 4rem;
         display : flex;
         align-items: center;
         justify-content: space-around;
-        box-shadow: 0 0 0 .1rem rgba(128, 128, 128, 0.164);
-        min-width : 20rem;
+        /* box-shadow: 0 0 0 .2rem #2F5389; */
+        color : #ffffff;
+        max-width : 40rem;
+        margin : auto;
     }
 
-    navbar > a {
-        background : #332f2f8f;
+    navbar > a, .popOutIcon {
+        background : #2F5389;
         width : 20%;
         height : 100%;
-        display : flex;
+        max-height: 3rem;
         align-items: center;
         justify-content: center;
         font-size: 1.2rem;
-        text-transform: uppercase;
-        letter-spacing: .1rem;
+        border-radius: 1rem;
+        margin : 1rem;
+        /* letter-spacing: -.1rem; */
+        /* text-transform: uppercase; */
     }
 
-    a:hover {
-        box-shadow: 0 0 0 .4rem rgba(128, 128, 128, 0.164);
+    a:hover, .popOutIcon:hover   {
+        background : #101C2E;
+        /* box-shadow: 0 0 0 .5rem rgba(236, 236, 236, 0.164); */
+        /* transform:
+            translate3d(0px, .1rem, 0px)
+            rotateX(-10deg)
+            rotateZ(-5deg); */
+    }
+
+    @media (max-width: 566px) {
+        navbar {
+            flex-direction: column;
+            height : auto;
+        }
+
+        navbar > a, .popOutIcon {
+            padding : .5rem;
+            width : 100%;
+            justify-content: left;
+            border-radius: 0rem;
+            margin : 0rem;
+        }
+
+        navbar > a {
+            display : none;
+        }
+
+        .popOutIcon {
+            display : flex;
+            cursor : pointer;
+            font-size : 2.3rem;
+            height : 4rem;
+        }
     }
 </style>
