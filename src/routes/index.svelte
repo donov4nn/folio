@@ -3,7 +3,6 @@
 
 <script>
 	import PageTitle from '$lib/PageTitle.svelte'
-	import TypeWriter from '$lib/TypeWriter.svelte'
 </script>
 
 <PageTitle  title="Accueil"
