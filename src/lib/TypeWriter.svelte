@@ -1,5 +1,5 @@
 <script>
-    import Fa from '$lib/FaWrapper.svelte'
+    import Fa from 'svelte-fa/src/fa.svelte'
     import {onMount} from 'svelte'
     export let speed = 4
     export let icon
@@ -18,7 +18,7 @@
         <slot />
     </span>
     {#if icon}
-        <span class="popAfter"><Fa faIcon={icon} /></span>
+        <span class="popAfter"><Fa {icon} /></span>
     {/if}
 </p>
 

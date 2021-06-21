@@ -1,23 +1,25 @@
 <script>
-    import Fa from '$lib/FaWrapper.svelte'
+    import Fa from 'svelte-fa/src/fa.svelte'
+    import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
     import {clickOutside} from '$lib/clickOutside.js'
+	import { fade } from 'svelte/transition';
 
-    let flexA = false
+    let toggleClassNavbar = false
 
     function handleClickBurger() {
-        flexA = !flexA
+        toggleClassNavbar = !toggleClassNavbar
     }
 
     function handleClickNavBar(e) {
         if (e.toElement.matches('a')) {
-            flexA = false
+            toggleClassNavbar = false
         }
     }
 </script>
 
-<navbar class:flexA use:clickOutside={() => flexA = false} on:click={handleClickNavBar}>
-    <span on:click={handleClickBurger} class="popOutIcon"><Fa faIcon="faBars" /></span>
-    <a href="/" ><Fa faIcon={"faHome"} /></a>
+<navbar class:toggleClassNavbar use:clickOutside={() => toggleClassNavbar = false} on:click={handleClickNavBar}>
+    <span on:click={handleClickBurger} class="popOutIcon"><Fa icon={faBars} /></span>
+    <a href="/" ><Fa icon={faHome} /></a>
     <a href="/projects">Projets</a>
     <a href="/articles">Articles</a>
     <a href="/cv">CV</a>
@@ -25,7 +27,7 @@
 </navbar>
 
 <style>
-    .flexA > a {
+    .toggleClassNavbar > a {
         display : flex;
     }
     .popOutIcon {
