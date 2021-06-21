@@ -11,8 +11,7 @@
 :root {
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
-	/* line-height: 36px; */
-	--bgcolor: #1D3354;
+	--bgcolor: #1d3354;
 }
 
 body,
@@ -23,7 +22,7 @@ html,
 	background: var(--bgcolor);
 	color: #ffffff;
 	position: relative;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 a {
@@ -70,4 +69,35 @@ main > h1 {
 .fadeIn {
 	animation: fadeIn ease 2s;
 	opacity: 1 !important;
+}
+
+@media (max-width: 566px) {
+	main {
+		padding-left: 0!important;
+		padding-right: 0!important;
+	}
+}
+
+
+.wrapperParallax .section {
+	position: relative;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	text-shadow: 0 0 5px #000;
+}
+
+
+.wrapperParallax .parallax::after {
+	content: " ";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transform: translateZ(-1px) scale(1.5);
+	background-size: 100%;
+	z-index: -1;
 }
