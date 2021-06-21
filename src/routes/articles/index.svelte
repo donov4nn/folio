@@ -2,7 +2,6 @@
 	export async function load({ fetch }) {
 		const posts = await fetch(`/articles.json`).then((r) => r.json())
 
-		console.log(posts)
 		return {
 			props: { posts }
 		}
