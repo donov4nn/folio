@@ -1,16 +1,15 @@
 <script context="module">
     export async function load({ page, fetch }) {
         const slug = page.params.slug
-        const {htmlData, metadata} = await fetch(`/articles/${slug}.json`).then((r) => r.json())
+        const {htmlData} = await fetch(`/articles/${slug}.json`).then((r) => r.json())
 
         return {
-            props: { htmlData, metadata }
+            props: { htmlData }
         };
     }
 </script>
 
 <script>
-    export let metadata
     export let htmlData
 </script>
 
