@@ -15,8 +15,6 @@
 	import PopIn from '$lib/PopIn.svelte'
 
 	export let posts
-
-	$: console.log(posts)
 </script>
 
 <PageTitle  title="Articles"
@@ -26,9 +24,21 @@
 
 <PopIn duration={100} y={200} >
 	{#each posts as post}
-		 <a href="/articles/{post.post}">{post.post} ({post.metadata.date})</a>
+		 <a href="/articles/{post.post}">{post.metadata.title} ({post.metadata.date})</a>
 	{/each}
 </PopIn>
 
 <style>
+	a {
+		padding : 1rem;
+		margin-bottom : 1rem;
+		box-shadow : 0 0 0 0.2rem #aac7f1;
+	}
+
+	@media (max-width: 566px) {
+		a {
+			margin-left : 1rem;
+			margin-right : 1rem;
+		}
+	}
 </style>

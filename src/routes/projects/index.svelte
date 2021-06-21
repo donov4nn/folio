@@ -14,19 +14,19 @@
 
 <ParallaxeLayer duration={1700} y={200}>
 	<section class="section parallax" style="background : #4d77b6">
-		<h1>Projet </h1>
+		<h1>Projet 1</h1>
 	</section>
 	<section class="section parallax" style="background : #0e459c">
 		<h1>Projet 2</h1>
 	</section>
-	<!-- <section class="section static">
-		<h1>Projet 2</h1>
-	</section> -->
 	<section class="section parallax" style="background : #032963">
 		<h1>Projet 3</h1>
 	</section>
 	<section class="section parallax" style="background : teal">
 		<h1>Projet 4</h1>
+	</section>
+	<section class="section static">
+		<h1>Projet 5 (static)</h1>
 	</section>
 </ParallaxeLayer>
 
