@@ -24,7 +24,7 @@
         overflow-y: auto;
         perspective: 2px;
         border-radius: .5rem;
-        border : solid .1rem #2F5389;
+        box-shadow : 0 0 0 .1rem #2F5389;
         scrollbar-width: none;
     }
 </style>

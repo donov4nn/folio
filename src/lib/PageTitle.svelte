@@ -24,8 +24,8 @@
 
 <style>
     h1 {
+        margin : 4rem auto;
         margin-top : 0rem;
-        margin : 0 auto;
         position: relative;
     }
 

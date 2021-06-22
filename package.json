@@ -13,7 +13,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@fontsource/roboto": "^4.4.5",
+    "@fontsource/montserrat": "^4.4.5",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "marked": "^2.1.1",
     "marked-metadata": "0.0.6",

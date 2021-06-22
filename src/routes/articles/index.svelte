@@ -34,6 +34,10 @@
 		box-shadow : 0 0 0 0.2rem #aac7f1;
 	}
 
+	a:hover {
+		background : #101C2E;
+	}
+
 	@media (max-width: 566px) {
 		a {
 			margin-left : 1rem;

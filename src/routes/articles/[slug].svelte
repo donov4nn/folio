@@ -10,10 +10,11 @@
 </script>
 
 <script>
+    import {fade} from 'svelte/transition'
     export let htmlData
 </script>
 
-<div class="articleWrapper">
+<div class="articleWrapper" in:fade>
     {@html htmlData}
 </div>
 

@@ -1,6 +1,6 @@
 <!--
-date: en écriture 🔥
-title: Devenir développeur à 21 ans sans jamais avoir codé
+date: en cours d'écriture 🔥
+title: Devenir développeur
 -->
 En cours d'écriture 🔥
 ========================
