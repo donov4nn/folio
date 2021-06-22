@@ -18,21 +18,24 @@
 <script>
     import {fade} from 'svelte/transition'
     import marked from 'marked'
-    import {onMount} from 'svelte'
     import {page} from '$app/stores'
     export let data
-
-    onMount(async () => {
-        if (!data?.length) {
-            let text = await fetch(`/posts/${$page.params.slug}.md`).then(r => r.text())
-            data = marked(text)
-        }
-    })
+    let promise = fetch(`/posts/${$page.params.slug}.md`)
+                        .then(d => d.text())
+                        .then(text => marked(text))
 </script>
 
-<div class="articleWrapper" in:fade>
-    {@html data}
-</div>
+{#if data && data.length}
+    <div class="articleWrapper" in:fade>
+        {@html data}
+    </div>
+        {:else}
+        {#await promise then value}
+            <div class="articleWrapper" in:fade>
+                {@html value}
+            </div>
+        {/await}
+    {/if}
 
 <style>
     .articleWrapper {
