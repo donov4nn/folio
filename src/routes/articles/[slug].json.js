@@ -11,6 +11,6 @@ export function get({ params }) {
     const body = JSON.stringify({ htmlData, metadata })
 
     return {
-        body
+        body : { htmlData }
     }
 }

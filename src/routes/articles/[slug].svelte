@@ -18,14 +18,14 @@
 <script>
     import {fade} from 'svelte/transition'
     import marked from 'marked'
-    import MarkedMetaData from 'marked-metadata'
-
+    import {onMount} from 'svelte'
+    import {page} from '$app/stores'
     export let data
 
-    onMount(() => {
+    onMount(async () => {
         if (!data?.length) {
-            const md = new MarkedMetaData(`static/posts/devenir-developpeur.md`)
-            data = marked(md.markdown())
+            let text = await fetch(`/posts/${$page.params.slug}.md`).then(r => r.text())
+            data = marked(text)
         }
     })
 </script>
