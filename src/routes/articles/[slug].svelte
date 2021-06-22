@@ -1,21 +1,37 @@
 <script context="module">
     export async function load({ page, fetch }) {
         const slug = page.params.slug
-        const {htmlData} = await fetch(`/articles/${slug}.json`).then((r) => r.json())
+        let data
+        try {
+            const {htmlData} = await fetch(`/articles/${slug}.json`).then((r) => r.json())
+            data = htmlData
+        } catch (err) {
+            data = ''
+        }
 
         return {
-            props: { htmlData }
+            props: { data }
         };
     }
 </script>
 
 <script>
     import {fade} from 'svelte/transition'
-    export let htmlData
+    import marked from 'marked'
+    import MarkedMetaData from 'marked-metadata'
+
+    export let data
+
+    onMount(() => {
+        if (!data?.length) {
+            const md = new MarkedMetaData(`static/posts/devenir-developpeur.md`)
+            data = marked(md.markdown())
+        }
+    })
 </script>
 
 <div class="articleWrapper" in:fade>
-    {@html htmlData}
+    {@html data}
 </div>
 
 <style>
