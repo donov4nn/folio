@@ -8,10 +8,9 @@
         } catch (err) {
             data = ''
         }
-
         return {
             props: { data }
-        };
+        }
     }
 </script>
 
@@ -20,22 +19,19 @@
     import marked from 'marked'
     import {page} from '$app/stores'
     export let data
-    let promise = fetch(`/posts/${$page.params.slug}.md`)
-                        .then(d => d.text())
-                        .then(text => marked(text))
+    let promise = new Promise(async (res) => {
+        if (data && data.length) res(data)
+        const resp = await fetch(`/posts/${$page.params.slug}.md`)
+        if (resp.ok) res(marked(await resp.text()))
+        res(`L'article ${$page.params.slug} n'existe pas`)
+    })
 </script>
 
-{#if data && data.length}
+{#await promise then value}
     <div class="articleWrapper" in:fade>
-        {@html data}
+        {@html value}
     </div>
-        {:else}
-        {#await promise then value}
-            <div class="articleWrapper" in:fade>
-                {@html value}
-            </div>
-        {/await}
-    {/if}
+{/await}
 
 <style>
     .articleWrapper {

@@ -19,7 +19,7 @@
     {#await promise then value}
         <span in:fade class="popAfter"><Fa {icon} /></span>
     {/await}
-    <TypeWriter {speed} {icon}>{text}</TypeWriter>
+    <TypeWriter {speed}>{text}</TypeWriter>
 </h1>
 
 <style>
