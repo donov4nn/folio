@@ -1,7 +1,7 @@
 import marked from 'marked'
 import MarkedMetaData from 'marked-metadata'
 
-export async function get({ params }) {
+export function get({ params }) {
     const { slug } = params;
 
     const md = new MarkedMetaData(`static/posts/${slug}.md`)
